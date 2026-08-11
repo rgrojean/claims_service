@@ -1,0 +1,22 @@
+[
+  {
+    "claimRef": "RVB-2025-00041",
+    "patientId": "483921",
+    "payerId": "BCBS_TN",
+    "memberId": "XBC1234567",
+    "serviceDate": "2025-01-08",
+    "cpt": "99213",
+    "amount": 185.0,
+    "diagnosis": "M545"
+  },
+  {
+    "claimRef": "RVB-2025-00042",
+    "patientId": "483921",
+    "payerId": "TN_WORKERS_COMP",
+    "memberId": "WC-IGNORE",
+    "serviceDate": "2025-01-09",
+    "cpt": "99214",
+    "amount": 240.0,
+    "diagnosis": "S39012A"
+  }
+]

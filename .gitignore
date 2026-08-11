@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+outbox/*.837
+inbox/*.835
+!outbox/.gitkeep
+!inbox/.gitkeep

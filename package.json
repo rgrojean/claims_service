@@ -1,0 +1,26 @@
+{
+  "name": "claims-service",
+  "version": "1.0.0",
+  "private": true,
+  "description": "ClaimBridge — Claims Submission & Reconciliation Service",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "tsx --test test/*.test.ts",
+    "batch:submit": "tsx src/batch/submit.ts",
+    "batch:ingest": "tsx src/batch/ingest.ts"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "js-yaml": "^4.1.0",
+    "pg": "^8.13.3"
+  },
+  "devDependencies": {
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^18.19.76",
+    "@types/pg": "^8.11.11",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.2"
+  }
+}

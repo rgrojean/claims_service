@@ -1,0 +1,13 @@
+payers:
+  - id: BCBS_TN
+    name: BlueCross BlueShield of Tennessee
+    subscriberIdSource: memberId
+  - id: AETNA
+    name: Aetna
+    subscriberIdSource: memberId
+  - id: TN_WORKERS_COMP
+    name: Tennessee Workers Compensation Fund
+    subscriberIdSource: ssn
+  - id: LIBERTY_MUTUAL_WC
+    name: Liberty Mutual Workers Comp
+    subscriberIdSource: ssn

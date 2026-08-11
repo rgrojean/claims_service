@@ -1,0 +1,11 @@
+services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: claimbridge
+      POSTGRES_PASSWORD: claimbridge
+      POSTGRES_DB: claimbridge
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./sql/schema.sql:/docker-entrypoint-initdb.d/01-schema.sql

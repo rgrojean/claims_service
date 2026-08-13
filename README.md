@@ -33,6 +33,37 @@ workqueue (billable encounters)
 
 Single service, batch-oriented. Nothing in ClaimBridge runs in a request/response path with a human waiting; everything is jobs. The nightly submission window (01:30) and the reconciliation run (06:00) are the two moments that matter.
 
+## How to run
+
+Requires Node 18+ and Docker. Submission also needs a Patient Identity Service instance reachable at `PIS_URL` (default `http://localhost:4110`).
+
+```bash
+npm install
+cp .env.example .env
+docker compose up -d
+```
+
+Postgres listens on host port **5434** so it does not collide with a local 5432. The compose file applies `sql/schema.sql` on first start.
+
+```bash
+npm test
+npm run typecheck
+```
+
+**Submit claims** — reads `data/workqueue.json`, fetches each patient from PIS, writes 837P files to `outbox/`, and snapshots the enrichment into Postgres:
+
+```bash
+npm run batch:submit
+```
+
+**Ingest remits** — reads `.835` files from `inbox/`, matches them against submitted claims, and inserts unmatched remits into the exception queue:
+
+```bash
+npm run batch:ingest
+```
+
+Create `inbox/` if it does not exist and drop remit files there before ingest.
+
 ## How ClaimBridge consumes the Patient Identity Service
 
 During enrichment, ClaimBridge calls `GET /v2/patients/{patientId}` once per claim and reads more of the payload than any other consumer:

@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'fs';
 import { join } from 'path';
 import { enrichClaim, fetchPatient } from '../enrich/enrich';
@@ -19,7 +20,7 @@ async function main() {
     const x12 = generate837P(enriched);
     const file = join(outbox, `${enc.claimRef}.837`);
     writeFileSync(file, x12, 'utf8');
-    await insertSubmittedClaim(pool, enriched as unknown as Record<string, unknown>, x12);
+    await insertSubmittedClaim(pool, enriched, x12);
     console.log(`submitted ${enc.claimRef} -> ${file}`);
   }
 

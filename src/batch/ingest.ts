@@ -1,3 +1,4 @@
+import 'dotenv/config';
 import { readdirSync, readFileSync } from 'fs';
 import { join } from 'path';
 import { getPool } from '../db';
